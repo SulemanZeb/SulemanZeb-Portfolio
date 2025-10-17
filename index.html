@@ -62,36 +62,39 @@
             border-radius: 2px;
         }
 
-        /* Card styling (all sections and project cards) */
+        /* Card styling for the "come up" animation */
         .card {
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 1.5rem; 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
             border: 1px solid rgba(226, 232, 240, 0.7); 
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             height: 100%; 
             display: flex;
             flex-direction: column;
+
+            /* Updated transition for the new effect */
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+            /* Initial state for animation: hidden and shifted down */
+            opacity: 0;
+            transform: translateY(50px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Active state: when the card is in the viewport, it "comes up" */
+        .card.active {
+            opacity: 1;
+            transform: translateY(-5px); /* Sits slightly elevated */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
         .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+            /* On hover, lift it a bit more for interaction */
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
         }
         
-        /* Keyframe animations for fade-in effects */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Mobile Menu */
         .mobile-menu {
             display: none;
@@ -165,7 +168,7 @@
     <div class="relative z-10 bg-gray-50">
         <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <!-- About Me Section -->
-            <section id="about" class="mb-24 card p-8 reveal">
+            <section id="about" class="mb-24 card p-8">
                 <h2 class="text-4xl font-bold section-header">About Me</h2>
                 <p class="mt-6 text-lg leading-relaxed">
                     Hi, I'm Suleman Zeb — a physicist with an M.Phil. in Physics and a strong interest in data science and machine learning. During my research, I used machine learning and deep learning to study and predict the properties of materials, which gave me hands-on experience in working with data and building smart models.
@@ -176,7 +179,7 @@
             </section>
 
             <!-- Research Interests Section -->
-            <section id="research-interests" class="mb-24 card p-8 reveal">
+            <section id="research-interests" class="mb-24 card p-8">
                 <h2 class="text-4xl font-bold section-header">Research Interests</h2>
                 <div class="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
                     <div class="bg-blue-100 text-blue-800 p-3 rounded-lg font-semibold">Machine Learning</div>
@@ -189,7 +192,7 @@
             </section>
 
             <!-- Education Section -->
-            <section id="education" class="mb-24 card p-8 reveal">
+            <section id="education" class="mb-24 card p-8">
                 <h2 class="text-4xl font-bold section-header">Education</h2>
                 <div class="mt-6 space-y-8">
                     <!-- M.Phil -->
@@ -230,7 +233,7 @@
             </section>
             
             <!-- Research Projects Section -->
-            <section id="research-projects" class="mb-24 card p-8 reveal">
+            <section id="research-projects" class="mb-24 card p-8">
                 <h2 class="text-4xl font-bold section-header">Research Projects</h2>
                 <div class="mt-6 space-y-8">
                     <div>
@@ -258,7 +261,7 @@
             </section>
 
             <!-- Work Experience Section -->
-            <section id="work-experience" class="mb-24 card p-8 reveal">
+            <section id="work-experience" class="mb-24 card p-8">
                 <h2 class="text-4xl font-bold section-header">Work Experience</h2>
                 <div class="mt-6 space-y-8">
                     <!-- Teacher -->
@@ -310,7 +313,7 @@
 
 
             <!-- Digital Skills Section -->
-            <section id="skills" class="mb-24 reveal">
+            <section id="skills" class="mb-24">
                 <h2 class="text-4xl font-bold section-header ml-8">Digital Skills</h2>
                 <div id="skills-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
                     <!-- Skills will be injected here by JS -->
@@ -318,7 +321,7 @@
             </section>
 
             <!-- Libraries Section -->
-            <section id="libraries" class="mb-24 reveal">
+            <section id="libraries" class="mb-24">
                 <h2 class="text-4xl font-bold section-header ml-8">Libraries & Frameworks</h2>
                 <div id="libraries-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6">
                     <!-- Libraries will be injected here by JS -->
@@ -326,7 +329,7 @@
             </section>
 
             <!-- Online Courses Section -->
-            <section id="online-courses" class="mb-24 reveal">
+            <section id="online-courses" class="mb-24">
                 <h2 class="text-4xl font-bold section-header ml-8">Online Courses & Certifications</h2>
                 <div class="mt-6 space-y-12">
                     <div class="card p-8">
@@ -345,7 +348,7 @@
             </section>
             
             <!-- Books Studied Section -->
-            <section id="books" class="mb-24 reveal">
+            <section id="books" class="mb-24">
                 <h2 class="text-4xl font-bold section-header ml-8">Books Studied</h2>
                 <div id="books-container" class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                     <!-- Books will be injected here by JS -->
@@ -353,7 +356,7 @@
             </section>
 
             <!-- Learning Resources Section -->
-            <section id="learning-resources" class="mb-24 reveal">
+            <section id="learning-resources" class="mb-24">
                  <h2 class="text-4xl font-bold section-header ml-8">Learning Resources</h2>
                  <div id="playlists-container" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Playlists will be injected here by JS -->
@@ -361,7 +364,7 @@
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="mb-24 reveal">
+            <section id="projects" class="mb-24">
                 <h2 class="text-4xl font-bold section-header ml-8">Projects</h2>
                 <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
                     <!-- Project Cards will be injected here by JS -->
@@ -369,7 +372,7 @@
             </section>
 
             <!-- Recommendations Section -->
-            <section id="recommendations" class="mb-24 reveal">
+            <section id="recommendations" class="mb-24">
                 <h2 class="text-4xl font-bold section-header ml-8">Recommendations</h2>
                 <div id="recommendations-container" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
                    <!-- Recommendations will be injected here by JS -->
@@ -377,7 +380,7 @@
             </section>
 
             <!-- Contact Us Section -->
-            <section id="contact" class="mb-24 card p-8 reveal">
+            <section id="contact" class="mb-24 card p-8">
                 <h2 class="text-4xl font-bold section-header">Contact Me</h2>
                 <div class="mt-6 space-y-4 text-lg">
                     <p class="flex items-center">
@@ -663,18 +666,23 @@
                 mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
             });
 
-            // Scroll Animation Observer
-            const sections = document.querySelectorAll('.reveal');
+            // Scroll Animation Observer for the "come up" effect
+            const cards = document.querySelectorAll('.card');
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        entry.target.classList.add('active');
+                    } else {
+                        // When it goes out of view, remove the class to reset it
+                        entry.target.classList.remove('active');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { 
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
 
-            sections.forEach(section => {
-                observer.observe(section);
+            cards.forEach(card => {
+                observer.observe(card);
             });
 
             // Three.js Scene Setup
@@ -765,4 +773,3 @@
     </script>
 </body>
 </html>
-
