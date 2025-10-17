@@ -326,20 +326,19 @@
             </section>
 
             <!-- Online Courses Section -->
-            <!-- UPDATE: Added headings and new container structure for courses -->
             <section id="online-courses" class="mb-24 reveal">
                 <h2 class="text-4xl font-bold section-header ml-8">Online Courses & Certifications</h2>
-                <div id="courses-container" class="mt-6 space-y-12">
+                <div class="mt-6 space-y-12">
                     <div>
-                        <h3 class="text-3xl font-bold text-gray-800 mb-6 ml-8">Udemy</h3>
-                        <div id="udemy-courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <!-- Udemy courses will be injected here by JS -->
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 ml-8">Coursera</h3>
+                        <div id="coursera-container">
+                           <!-- Coursera courses will be injected here by JS, grouped by category -->
                         </div>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-bold text-gray-800 mb-6 ml-8">Coursera</h3>
-                        <div id="coursera-courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                           <!-- Coursera courses will be injected here by JS -->
+                        <h3 class="text-3xl font-bold text-gray-800 mb-6 ml-8">Udemy</h3>
+                        <div id="udemy-container">
+                            <!-- Udemy courses will be injected here by JS, grouped by category -->
                         </div>
                     </div>
                 </div>
@@ -436,59 +435,84 @@
                 "👁️ Computer Vision", "🎥 OpenCV", "🎯 YOLO", "🧍 Mediapipe",
                 "🌐 Web Frameworks", "🧴 Flask", "⚡ FastAPI"
             ];
-
-            const courses = [
-                // Udemy Courses
-                { name: "Data Science Career Path", url: "https://ude.my/UC-03854df1-46c1-440d-86ff-5e624bc92bdb", platform: "udemy"},
-                { name: "Full Stack Data Science Developer Course", url: "https://ude.my/UC-945b2fa6-8a4a-400f-95b2-e51de682181f", platform: "udemy"},
-                { name: "2024 Master class on Data Science using Python", url: "https://ude.my/UC-6618a12c-758d-4e9b-8fe3-751ca8641c00", platform: "udemy"},
-                { name: "Data Analytics & Visualization", url: "https://ude.my/UC-92b0ae4b-c0fe-4a21-b644-51a262302aa6", platform: "udemy"},
-                { name: "Git, GitHub & Markdown Crash Course", url: "https://ude.my/UC-4a155213-5f0c-4945-8922-534d9dde5623", platform: "udemy"},
-                { name: "Python Complete Course For Python Beginners", url: "https://ude.my/UC-500c522c-3fef-43a1-88d8-3264022d52f3", platform: "udemy"},
-                { name: "Learn to Code in Python 3", url: "https://ude.my/UC-bd8a992b-50ec-4267-8e5a-39338a354891", platform: "udemy"},
-                { name: "Python Programming for Beginners | Hindi", url: "https://ude.my/UC-3a0ed59d-a4fa-4576-b4e2-afa982cb0360", platform: "udemy"},
-                { name: "Python OOP: A Complete Course", url: "https://ude.my/UC-90f77189-1921-4860-826c-1d576a8a476f", platform: "udemy"},
-                { name: "Python for OOP: The A-to-Z Course", url: "https://ude.my/UC-67f7c966-6efb-4b76-b718-8e880294d053", platform: "udemy"},
-                { name: "Python And Flask Demonstrations", url: "https://ude.my/UC-c98aa8ca-00af-4605-88c7-dcb7f5dde370", platform: "udemy"},
-                { name: "Python And Flask Framework Complete Course", url: "https://ude.my/UC-9539706d-f9aa-4176-a95d-97d15760d4f9", platform: "udemy"},
-                { name: "Python Beginners to Advance Bootcamp", url: "https://ude.my/UC-219a8321-edfb-42d0-a3c3-86696ef85a2e", platform: "udemy"},
-                { name: "Numpy, SciPy, Matplotlib & Pandas A-Z", url: "https://ude.my/UC-1d2d72f0-6166-4765-bafb-5ca9f3ad737d", platform: "udemy"},
-                { name: "Data Manipulation in Python", url: "https://ude.my/UC-4f929095-7d6b-4bd9-beee-4a800ceefac1", platform: "udemy"},
-                { name: "Mastering Python, Pandas, Numpy", url: "https://ude.my/UC-192415a2-d6bd-41b8-ba74-fea3489c1ab2", platform: "udemy"},
-                { name: "Python Project for Basics Data Analysis", url: "https://ude.my/UC-244d82da-c002-4257-a2c5-95e4c1df7c91", platform: "udemy"},
-                { name: "Python For Data Science A-Z: EDA", url: "https://ude.my/UC-db1a3f63-ceb8-43d5-ac3a-92c4bd7cffbc", platform: "udemy"},
-                { name: "Machine Learning - Fundamental of Python ML", url: "https://ude.my/UC-6aca1241-aeba-488f-a1b9-93ab612f3275", platform: "udemy"},
-                { name: "Machine Learning with Apache Spark 3.0", url: "https://ude.my/UC-8283095c-b550-4335-8519-8efa58ead4c2", platform: "udemy"},
-                { name: "Python for Machine Learning: Complete Course", url: "https://ude.my/UC-5f581dea-249e-44cb-8143-2e69f845d23c", platform: "udemy"},
-                { name: "Python & TensorFlow: Deep Dive into ML", url: "https://ude.my/UC-86dcd023-d0a5-45e8-8314-1e33e7b752b9", platform: "udemy"},
-                { name: "Deep Learning Mastery", url: "https://ude.my/UC-4753c915-18de-478f-b822-d7611c60f77f", platform: "udemy"},
-                { name: "Deep Learning Full course in Hindi", url: "https://ude.my/UC-0996b4aa-91c1-4a80-bbfb-720892af3dba", platform: "udemy"},
-                { name: "Generative AI Mastery With 15+ Projects", url: "https://ude.my/UC-61df75c1-3bd2-4652-9fcd-71e154b59c91", platform: "udemy"},
-                { name: "Master in Generative AI", url: "https://ude.my/UC-dfd9f902-5f86-4e1a-b5df-2103c901d1ea", platform: "udemy"},
-                { name: "Computer Vision Fundamentals", url: "https://ude.my/UC-5e794aff-f13e-4641-9779-2e1d4955d2bc", platform: "udemy"},
-                { name: "Complete ML Project Using YOLOv9", url: "https://ude.my/UC-6623316d-1ec2-4af5-845f-88a10208fbae", platform: "udemy"},
-                { name: "Microsoft Excel - Beginner to Advance", url: "https://ude.my/UC-2042fb22-9c18-4a09-9752-2ab9165b873d", platform: "udemy"},
-                { name: "Excel Success Blueprint", url: "https://ude.my/UC-2796b413-0bf1-40a5-80d6-fe75af48775a", platform: "udemy"},
-                { name: "HTML - The Complete Guide", url: "https://ude.my/UC-7bc3631e-8c3b-490a-a325-86aea1c6c007", platform: "udemy"},
-                { name: "Microsoft Azure: Hands On Training", url: "https://ude.my/UC-47af56e8-30cd-4301-8836-4ca18", platform: "udemy"},
-                { name: "Power BI in Hindi", url: "https://ude.my/UC-1317b968-1bf6-4bdd-b09c-b11cc8af169e", platform: "udemy"},
-                { name: "Body Language / Non-Verbal Communication", url: "https://ude.my/UC-36d9825d-c4a8-466c-a5e7-9a3023af3747", platform: "udemy"},
-                { name: "Ubuntu Linux for beginners", url: "https://ude.my/UC-2e8b0d70-3567-4ced-a69b-9b0aac6487a9", platform: "udemy"},
-                { name: "SQL & Database Design Mastery", url: "https://ude.my/UC-e130b1f2-ce2b-48f1-a4ed-422cdba7672c", platform: "udemy"},
-                { name: "Make a WordPress Website with Elementor", url: "https://ude.my/UC-7925e163-5bc6-4d2d-bac9-c34f87cddcab", platform: "udemy"},
-                { name: "Complete WordPress Website Developer Course", url: "https://ude.my/UC-e38f705f-0f58-4006-b33b-0cdd186d6a26", platform: "udemy"},
-                
-                // Coursera Courses
-                { name: "Structuring Machine Learning Projects", url: "https://coursera.org/verify/H3FW1E2GXPHR", platform: "coursera"},
-                { name: "AI For Everyone", url: "https://coursera.org/verify/YTPUKXQ8JQJ2", platform: "coursera"},
-                { name: "Neural Networks and Deep Learning", url: "https://coursera.org/verify/8DOWDTGAXQC3", platform: "coursera"},
-                { name: "Improving Deep Neural Networks", url: "https://coursera.org/verify/APGOHVGF3DFQ", platform: "coursera"},
-                { name: "Supervised Machine Learning", url: "https://coursera.org/verify/XLA6LEG2HOWL", platform: "coursera"},
-                { name: "Advanced Learning Algorithms", url: "https://coursera.org/verify/9BMOLSCYBESO", platform: "coursera"},
-                { name: "Unsupervised Learning, Recommenders, RL", url: "https://coursera.org/verify/7AHVR98DEOKT", platform: "coursera"},
-                { name: "Deep Learning with PyTorch", url: "https://coursera.org/verify/3SL57LJVCOJM", platform: "coursera"},
-                { name: "AI Agents and Agentic AI with Python", url: "https://coursera.org/verify/JMV6A8XH7D6A", platform: "coursera"}
-            ];
+            
+            const courseCategories = {
+                coursera: {
+                    "Machine Learning & AI Specializations": [
+                        { name: "AI For Everyone", url: "https://coursera.org/verify/YTPUKXQ8JQJ2" },
+                        { name: "Supervised Machine Learning", url: "https://coursera.org/verify/XLA6LEG2HOWL"},
+                        { name: "Advanced Learning Algorithms", url: "https://coursera.org/verify/9BMOLSCYBESO"},
+                        { name: "Unsupervised Learning, Recommenders, RL", url: "https://coursera.org/verify/7AHVR98DEOKT"},
+                    ],
+                    "Deep Learning Specialization": [
+                        { name: "Neural Networks and Deep Learning", url: "https://coursera.org/verify/8DOWDTGAXQC3"},
+                        { name: "Improving Deep Neural Networks", url: "https://coursera.org/verify/APGOHVGF3DFQ"},
+                        { name: "Structuring Machine Learning Projects", url: "https://coursera.org/verify/H3FW1E2GXPHR"},
+                        { name: "Deep Learning with PyTorch", url: "https://coursera.org/verify/3SL57LJVCOJM"},
+                    ],
+                    "Generative AI": [
+                        { name: "AI Agents and Agentic AI with Python", url: "https://coursera.org/verify/JMV6A8XH7D6A"}
+                    ]
+                },
+                udemy: {
+                    "Data Science & Machine Learning": [
+                        { name: "Data Science Career Path", url: "https://ude.my/UC-03854df1-46c1-440d-86ff-5e624bc92bdb"},
+                        { name: "Full Stack Data Science Developer Course", url: "https://ude.my/UC-945b2fa6-8a4a-400f-95b2-e51de682181f"},
+                        { name: "2024 Master class on Data Science using Python", url: "https://ude.my/UC-6618a12c-758d-4e9b-8fe3-751ca8641c00"},
+                        { name: "Machine Learning - Fundamental of Python ML", url: "https://ude.my/UC-6aca1241-aeba-488f-a1b9-93ab612f3275"},
+                        { name: "Machine Learning with Apache Spark 3.0", url: "https://ude.my/UC-8283095c-b550-4335-8519-8efa58ead4c2"},
+                        { name: "Python for Machine Learning: Complete Course", url: "https://ude.my/UC-5f581dea-249e-44cb-8143-2e69f845d23c"},
+                    ],
+                    "Python Programming": [
+                        { name: "Python Complete Course For Python Beginners", url: "https://ude.my/UC-500c522c-3fef-43a1-88d8-3264022d52f3"},
+                        { name: "Learn to Code in Python 3", url: "https://ude.my/UC-bd8a992b-50ec-4267-8e5a-39338a354891"},
+                        { name: "Python Programming for Beginners | Hindi", url: "https://ude.my/UC-3a0ed59d-a4fa-4576-b4e2-afa982cb0360"},
+                        { name: "Python OOP: A Complete Course", url: "https://ude.my/UC-90f77189-1921-4860-826c-1d576a8a476f"},
+                        { name: "Python for OOP: The A-to-Z Course", url: "https://ude.my/UC-67f7c966-6efb-4b76-b718-8e880294d053"},
+                        { name: "Python Beginners to Advance Bootcamp", url: "https://ude.my/UC-219a8321-edfb-42d0-a3c3-86696ef85a2e"},
+                    ],
+                    "Data Analysis & Visualization": [
+                         { name: "Data Analytics & Visualization", url: "https://ude.my/UC-92b0ae4b-c0fe-4a21-b644-51a262302aa6"},
+                         { name: "Numpy, SciPy, Matplotlib & Pandas A-Z", url: "https://ude.my/UC-1d2d72f0-6166-4765-bafb-5ca9f3ad737d"},
+                         { name: "Data Manipulation in Python", url: "https://ude.my/UC-4f929095-7d6b-4bd9-beee-4a800ceefac1"},
+                         { name: "Mastering Python, Pandas, Numpy", url: "https://ude.my/UC-192415a2-d6bd-41b8-ba74-fea3489c1ab2"},
+                         { name: "Python Project for Basics Data Analysis", url: "https://ude.my/UC-244d82da-c002-4257-a2c5-95e4c1df7c91"},
+                         { name: "Python For Data Science A-Z: EDA", url: "https://ude.my/UC-db1a3f63-ceb8-43d5-ac3a-92c4bd7cffbc"},
+                         { name: "Power BI in Hindi", url: "https://ude.my/UC-1317b968-1bf6-4bdd-b09c-b11cc8af169e"},
+                    ],
+                    "Deep Learning": [
+                        { name: "Python & TensorFlow: Deep Dive into ML", url: "https://ude.my/UC-86dcd023-d0a5-45e8-8314-1e33e7b752b9"},
+                        { name: "Deep Learning Mastery", url: "https://ude.my/UC-4753c915-18de-478f-b822-d7611c60f77f"},
+                        { name: "Deep Learning Full course in Hindi", url: "https://ude.my/UC-0996b4aa-91c1-4a80-bbfb-720892af3dba"},
+                    ],
+                    "Generative AI": [
+                        { name: "Generative AI Mastery With 15+ Projects", url: "https://ude.my/UC-61df75c1-3bd2-4652-9fcd-71e154b59c91"},
+                        { name: "Master in Generative AI", url: "https://ude.my/UC-dfd9f902-5f86-4e1a-b5df-2103c901d1ea"},
+                    ],
+                    "Computer Vision": [
+                        { name: "Computer Vision Fundamentals", url: "https://ude.my/UC-5e794aff-f13e-4641-9779-2e1d4955d2bc"},
+                        { name: "Complete ML Project Using YOLOv9", url: "https://ude.my/UC-6623316d-1ec2-4af5-845f-88a10208fbae"},
+                    ],
+                    "Web Development": [
+                        { name: "Python And Flask Demonstrations", url: "https://ude.my/UC-c98aa8ca-00af-4605-88c7-dcb7f5dde370"},
+                        { name: "Python And Flask Framework Complete Course", url: "https://ude.my/UC-9539706d-f9aa-4176-a95d-97d15760d4f9"},
+                        { name: "HTML - The Complete Guide", url: "https://ude.my/UC-7bc3631e-8c3b-490a-a325-86aea1c6c007"},
+                        { name: "Make a WordPress Website with Elementor", url: "https://ude.my/UC-7925e163-5bc6-4d2d-bac9-c34f87cddcab"},
+                        { name: "Complete WordPress Website Developer Course", url: "https://ude.my/UC-e38f705f-0f58-4006-b33b-0cdd186d6a26"},
+                    ],
+                    "Tools & Software": [
+                        { name: "Git, GitHub & Markdown Crash Course", url: "https://ude.my/UC-4a155213-5f0c-4945-8922-534d9dde5623"},
+                        { name: "Microsoft Excel - Beginner to Advance", url: "https://ude.my/UC-2042fb22-9c18-4a09-9752-2ab9165b873d"},
+                        { name: "Excel Success Blueprint", url: "https://ude.my/UC-2796b413-0bf1-40a5-80d6-fe75af48775a"},
+                        { name: "Ubuntu Linux for beginners", url: "https://ude.my/UC-2e8b0d70-3567-4ced-a69b-9b0aac6487a9"},
+                        { name: "SQL & Database Design Mastery", url: "https://ude.my/UC-e130b1f2-ce2b-48f1-a4ed-422cdba7672c"},
+                        { name: "Microsoft Azure: Hands On Training", url: "https://ude.my/UC-47af56e8-30cd-4301-8836-4ca18"},
+                    ],
+                    "Soft Skills": [
+                        { name: "Body Language / Non-Verbal Communication", url: "https://ude.my/UC-36d9825d-c4a8-466c-a5e7-9a3023af3747"},
+                    ]
+                }
+            };
             
             const books = [
                 { name: "Python Programming and Numerical Methods", image: "https://placehold.co/128x176/3b82f6/white?text=Book+Cover", url: "https://share.google/c4lkF5nPTcp2ZvvL" },
@@ -497,19 +521,19 @@
             ];
             
             const playlists = [
-                { name: "100 Days of Python", url: "https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" },
-                { name: "100 Days of Machine Learning", url: "https://youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH" },
-                { name: "100 Days of Deep Learning", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
-                { name: "PyTorch", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
-                { name: "Gen AI", url: "https://youtube.com/playlist?list=PLKnIA16_RmvaTbihpo4MtzVm4XOQa0ER0" },
-                { name: "MLOps", url: "https://youtube.com/playlist?list=PLZoTAELRMXVOk1pRcOCaG5xtXxgMalpIe" },
-                { name: "ML Projects", url: "https://youtube.com/playlist?list=PLKnIA16_RmvY5eP91BGPa0vXUYmIdtfPQ" },
-                { name: "Pandas Data Analysis", url: "https://youtube.com/playlist?list=PLKnIA16_RmvbR85fgbfVRKOiMokUKVupy" },
-                { name: "FastAPI", url: "https://youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" },
-                { name: "Graph Neural Network", url: "https://youtube.com/playlist?list=PLRWTUhb_YehkGBCBxKOiEJtNQrBHqln4N" },
-                { name: "Scientific Writing", url: "https://youtube.com/playlist?list=PL9XvIvvVL50FfbyuZQjpF8zcTB7HWROYY" },
-                { name: "Linux Course", url: "https://youtube.com/playlist?list=PL9XvIvvVL50GrMLg9dj1y0QJckn4Z55hq" },
-                { name: "End to End Projects", url: "https://youtube.com/playlist?list=PLkz_y24mlSJaGcOXgJSuMM62sFha4fank" }
+                { name: "100 Days of Python", channel: "CodeWithHarry", url: "https://youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg" },
+                { name: "100 Days of Machine Learning", channel: "CampusX", url: "https://youtube.com/playlist?list=PLKnIA16_Rmvbr7zKYQuBfsVkjoLcJgxHH" },
+                { name: "100 Days of Deep Learning", channel: "CampusX", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
+                { name: "PyTorch", channel: "CampusX", url: "https://youtube.com/playlist?list=PLKnIA16_RmvYuZauWaPlRTC54KxSNLtNn" },
+                { name: "Gen AI", channel: "CampusX", url: "https://youtube.com/playlist?list=PLKnIA16_RmvaTbihpo4MtzVm4XOQa0ER0" },
+                { name: "MLOps", channel: "Krish Naik", url: "https://youtube.com/playlist?list=PLZoTAELRMXVOk1pRcOCaG5xtXxgMalpIe" },
+                { name: "ML Projects", channel: "CampusX", url: "https://youtube.com/playlist?list=PLKnIA16_RmvY5eP91BGPa0vXUYmIdtfPQ" },
+                { name: "Pandas Data Analysis", channel: "CampusX", url: "https://youtube.com/playlist?list=PLKnIA16_RmvbR85fgbfVRKOiMokUKVupy" },
+                { name: "FastAPI", channel: "CampusX", url: "https://youtube.com/playlist?list=PLKnIA16_RmvZ41tjbKB2ZnwchfniNsMuQ" },
+                { name: "Graph Neural Network", channel: "Machine Learning with Phil", url: "https://youtube.com/playlist?list=PLRWTUhb_YehkGBCBxKOiEJtNQrBHqln4N" },
+                { name: "Scientific Writing", channel: "Codanics", url: "https://youtube.com/playlist?list=PL9XvIvvVL50FfbyuZQjpF8zcTB7HWROYY" },
+                { name: "Linux Course", channel: "Codanics", url: "https://youtube.com/playlist?list=PL9XvIvvVL50GrMLg9dj1y0QJckn4Z55hq" },
+                { name: "End to End Projects", channel: "DSwithBappy", url: "https://youtube.com/playlist?list=PLkz_y24mlSJaGcOXgJSuMM62sFha4fank" }
             ];
             
             const recommendations = [
@@ -562,22 +586,35 @@
                     librariesContainer.innerHTML += card;
                 });
 
-                // UPDATE: Logic to sort courses into Udemy and Coursera containers
-                const udemyCoursesContainer = document.getElementById('udemy-courses-container');
-                const courseraCoursesContainer = document.getElementById('coursera-courses-container');
-                courses.forEach(course => {
-                    const cardHTML = `
-                        <div class="card p-6 flex flex-col text-center items-center justify-center">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex-grow">${course.name}</h3>
-                            <a href="${course.url}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-auto">Verify Certificate</a>
-                        </div>`;
-                    
-                    if (course.platform === 'udemy') {
-                        udemyCoursesContainer.innerHTML += cardHTML;
-                    } else if (course.platform === 'coursera') {
-                        courseraCoursesContainer.innerHTML += cardHTML;
+                const udemyContainer = document.getElementById('udemy-container');
+                const courseraContainer = document.getElementById('coursera-container');
+                const containers = { coursera: courseraContainer, udemy: udemyContainer };
+
+                for (const platform in courseCategories) {
+                    const platformContainer = containers[platform];
+                    if (platformContainer) {
+                        const categories = courseCategories[platform];
+                        for (const category in categories) {
+                            const categoryHeading = document.createElement('h4');
+                            categoryHeading.className = "text-3xl font-bold text-teal-800 mt-16 mb-6 ml-8";
+                            categoryHeading.textContent = category;
+                            platformContainer.appendChild(categoryHeading);
+
+                            const gridContainer = document.createElement('div');
+                            gridContainer.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8";
+                            
+                            categories[category].forEach(course => {
+                                const cardHTML = `
+                                    <div class="card p-6 flex flex-col text-center items-center justify-center">
+                                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex-grow">${course.name}</h3>
+                                        <a href="${course.url}" target="_blank" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-auto">Verify Certificate</a>
+                                    </div>`;
+                                gridContainer.innerHTML += cardHTML;
+                            });
+                            platformContainer.appendChild(gridContainer);
+                        }
                     }
-                });
+                }
                 
                 const booksContainer = document.getElementById('books-container');
                 books.forEach(book => {
@@ -594,7 +631,8 @@
                 playlists.forEach(playlist => {
                     const card = `
                         <div class="card p-6 flex flex-col text-center">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-3 flex-grow">${playlist.name}</h3>
+                            <h3 class="text-lg font-bold text-gray-900 mb-2 flex-grow">${playlist.name}</h3>
+                            <p class="text-sm text-gray-600 mb-4">Channel: ${playlist.channel}</p>
                             <a href="${playlist.url}" target="_blank" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 mt-auto">Watch on YouTube</a>
                         </div>`;
                     playlistsContainer.innerHTML += card;
@@ -727,3 +765,4 @@
     </script>
 </body>
 </html>
+
